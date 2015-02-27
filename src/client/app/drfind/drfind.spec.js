@@ -5,24 +5,24 @@ describe('DrFind', function() {
     var scope;
     var DataService;
     var res = {
-		items: [
-			{key:'value'},
-			{key:'value'},
-			{key:'value'},
-			{key:'value'},
-			{key:'value'},
-			{key:'value'},
-			{key:'value'},
-			{key:'value'},
-			{key:'value'},
-			{key:'value'}
-		]
+        items: [
+            {key:'value'},
+            {key:'value'},
+            {key:'value'},
+            {key:'value'},
+            {key:'value'},
+            {key:'value'},
+            {key:'value'},
+            {key:'value'},
+            {key:'value'},
+            {key:'value'}
+        ]
     };
 
     beforeEach(module('app'));
 
     beforeEach(inject(function($controller, $rootScope, $injector, $q) {
-    	DataService = $injector.get('DataService');
+        DataService = $injector.get('DataService');
         spyOn(DataService, 'GetData').and.returnValue($q.when(res));
         ctrl = $controller('DrFind', {$scope: scope});
         scope = $rootScope;
@@ -30,7 +30,7 @@ describe('DrFind', function() {
     }));
 
     it('should have 10 Professionals items', function() {
-        scope.$digest();        
+        scope.$digest();
         expect(ctrl.items.length).toBe(res.items.length);
     });
 
