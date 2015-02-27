@@ -5,24 +5,27 @@
     angular.module('app.core')
         .controller('DrFind', DrFind);
 
-    DrFind.$inject = ['$scope', 'DataService'];
+    DrFind.$inject = ['DataService'];
     /* @ngInject */
-    function DrFind ($scope, DataService) {
+    function DrFind (DataService) {
         var vm = this;
         vm.GetData = GetData;
         vm.DocSelect = DocSelect;
-        vm.Items = [];
+        vm.items = [];
         vm.selected = {};
         vm.markers = [];
+
+
 
         // Initial Functions
         vm.InitPage = function() {
             vm.GetData(); // Get the json data on page load
         };
 
-        function GetData(data) {
+        function GetData() {
             DataService.GetData().success(function(res) {
-                vm.Items = res.professionals; // Make the json object available to the DOM
+                vm.items = res.professionals; // Make the json object available to the DOM
+                console.log('vm.items: ', vm.items);
             });
         }
 
